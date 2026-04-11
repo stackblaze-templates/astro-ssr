@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// These run on the server for every request
+const serverTime = new Date().toLocaleTimeString();
+const requestId = Math.random().toString(36).substring(2, 8);
+---
+
+<Layout title="Astro SSR on Stackblaze">
+  <main class="min-h-screen flex flex-col items-center justify-center px-6 py-16">
+    <p class="text-neutral-500 text-sm mb-6">Astro + Tailwind on Stackblaze</p>
+    <h1 class="text-4xl font-bold mb-8">It works.</h1>
+    
+    <!-- SSR Demo -->
+    <div class="border border-neutral-800 p-6 mb-6 w-full max-w-md">
+      <p class="text-neutral-500 text-xs uppercase tracking-wide mb-4">Server-Side Stackblazeing</p>
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-neutral-500 text-sm">Stackblaze time</span>
+        <span class="font-mono text-white">{serverTime}</span>
+      </div>
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-neutral-500 text-sm">Request ID</span>
+        <span class="font-mono text-white">{requestId}</span>
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-neutral-500 text-sm">Client time</span>
+        <span id="client-time" class="font-mono text-green-400">--:--:--</span>
+      </div>
+      <p class="text-neutral-600 text-xs mt-4">
+        Refresh — server values change, client time keeps ticking.
+      </p>
+    </div>
+
+    <!-- API Demo -->
+    <div class="border border-neutral-800 p-6 mb-8 w-full max-w-md">
+      <p class="text-neutral-500 text-xs uppercase tracking-wide mb-4">API Route</p>
+      <div class="flex gap-2 mb-4">
+        <input 
+          type="text" 
+          id="name-input" 
+          placeholder="Enter a name"
+          class="flex-1 bg-transparent border border-neutral-700 px-3 py-2 text-white text-sm placeholder-neutral-600 focus:outline-none focus:border-neutral-500"
+        />
+        <button 
+          id="api-button"
+          class="bg-white text-black px-4 py-2 text-sm hover:bg-neutral-200"
+        >
+          Call API
+        </button>
+      </div>
+      <div id="api-response" class="font-mono text-xs text-neutral-400 bg-neutral-900 p-3 min-h-[60px]">
+        <span class="text-neutral-600">Response will appear here</span>
+      </div>
+      <p class="text-neutral-600 text-xs mt-3">
+        Calls <code class="text-neutral-400">/api/hello?name=...</code> and shows the JSON response.
+      </p>
+    </div>
+
+    <a href="https://docs.astro.build" target="_blank" rel="noopener" class="text-neutral-500 text-sm hover:text-white">
+      Astro Docs →
+    </a>
+  </main>
+</Layout>
+
+<script>
+  // Client time ticker
+  function updateClientTime() {
+    const el = document.getElementById('client-time');
+    if (el) {
+      el.textContent = new Date().toLocaleTimeString();
+    }
+  }
+  updateClientTime();
+  setInterval(updateClientTime, 1000);
+
+  // API demo
+  const button = document.getElementById('api-button');
+  const input = document.getElementById('name-input') as HTMLInputElement;
+  const response = document.getElementById('api-response');
+
+  button?.addEventListener('click', async () => {
+    const name = input?.value || 'World';
+    try {
+      const res = await fetch(`/api/hello?name=${encodeURIComponent(name)}`);
+      const data = await res.json();
+      if (response) {
+        response.innerHTML = JSON.stringify(data, null, 2);
+      }
+    } catch (err) {
+      if (response) {
+        response.innerHTML = '<span class="text-red-400">Error calling API</span>';
+      }
+    }
+  });
+</script>
