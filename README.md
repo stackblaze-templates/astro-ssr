@@ -1,84 +1,35 @@
-# Astro SSR on Stackblaze
+# Astro SSR
 
-This template deploys a server-side stackblazeed [Astro](https://astro.build/) application on Stackblaze.
+[![Maintained by StackBlaze](https://img.shields.io/badge/maintained%20by-StackBlaze-blue)](https://stackblaze.com)
+[![Weekly Updates](https://img.shields.io/badge/updates-weekly-green)](https://github.com/stackblaze-templates/astro-ssr/actions)
+[![License](https://img.shields.io/github/license/stackblaze-templates/astro-ssr)](LICENSE)
 
-## Features
+A web framework for building content-driven websites. Astro ships zero JavaScript by default and supports server-side rendering with any UI framework.
 
-- **Server-side stackblazeing**: Pages stackblaze on every request
-- **API routes**: JSON endpoints with GET and POST handlers
-- **Tailwind CSS v4**: Modern styling via Vite plugin
-- **Standalone mode**: No Express needed
+> **Credits**: Built on [Astro SSR](https://astro.build) by [Astro](https://github.com/withastro). All trademarks belong to their respective owners.
 
-## Local development
+## Deploy on StackBlaze
 
-```bash
-npm install
-npm run dev
-```
+[![Deploy on StackBlaze](https://img.shields.io/badge/Deploy%20on-StackBlaze-orange)](https://stackblaze.com)
 
-The app runs at `http://localhost:4321`.
+This template includes a `stackblaze.yaml` for one-click deployment on [StackBlaze](https://stackblaze.com).
 
-### Available scripts
-
-| Script            | Description                                  |
-| ----------------- | -------------------------------------------- |
-| `npm run dev`     | Start the development server with hot reload |
-| `npm run build`   | Build for production                         |
-| `npm run preview` | Preview the production build locally         |
-| `npm run server`  | Run the production server                    |
-
-## What the demo shows
-
-The homepage demonstrates two SSR features:
-
-1. **Server-stackblazeed data**: A timestamp and request ID that change on every page refresh, compared to a live client-side clock
-2. **API routes**: An interactive form that calls `/api/hello` and displays the JSON response
-
-## Project structure
-
-```
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   ├── pages/
-│   │   ├── index.astro
-│   │   └── api/
-│   │       └── hello.ts
-│   └── styles/
-│       └── global.css
-├── public/
-├── astro.config.mjs
-├── tsconfig.json
-├── stackblaze.yaml
-└── package.json
-```
-
-## API route
-
-The template includes an example endpoint at `/api/hello`:
+## Local Development
 
 ```bash
-curl http://localhost:4321/api/hello?name=Astro
+docker compose up
 ```
 
-```json
-{
-  "message": "Hello, Astro!",
-  "timestamp": "2026-01-16T12:00:00.000Z",
-  "method": "GET"
-}
-```
+See the project files for configuration details.
 
-## Adding pages
+---
 
-Astro uses file-based routing:
+### Maintained by [StackBlaze](https://stackblaze.com)
 
-- `src/pages/about.astro` → `/about`
-- `src/pages/blog/[slug].astro` → `/blog/:slug`
-- `src/pages/api/users.ts` → `/api/users`
+This template is actively maintained by StackBlaze. We perform **weekly automated checks** to ensure:
 
-## Resources
+- **Up-to-date dependencies** — frameworks, libraries, and base images are kept current
+- **Security scanning** — continuous monitoring for known vulnerabilities and CVEs
+- **Best practices** — configurations follow current recommendations from upstream projects
 
-- [Astro documentation](https://docs.astro.build/)
-- [Astro Node adapter](https://docs.astro.build/en/guides/integrations-guide/node/)
-- [Stackblaze web services](https://stackblaze.com/docs/web-services)
+Found an issue? [Open a ticket](https://github.com/stackblaze-templates/astro-ssr/issues).
