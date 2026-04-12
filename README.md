@@ -1,4 +1,4 @@
-# Astro SSR [![Maintained by StackBlaze](https://img.shields.io/badge/maintained%20by-StackBlaze-blue)](https://stackblaze.com) [![Weekly Updates](https://img.shields.io/badge/updates-weekly-green)](https://github.com/stackblaze-templates/astro-ssr/actions) [![License](https://img.shields.io/github/license/stackblaze-templates/astro-ssr)](LICENSE) [![Deploy on StackBlaze](https://img.shields.io/badge/Deploy%20on-StackBlaze-orange)](https://stackblaze.com)
+# Astro SSR [![Version](https://img.shields.io/badge/version-5-bc52ee)](https://github.com/stackblaze-templates/astro-ssr) [![Maintained by StackBlaze](https://img.shields.io/badge/maintained%20by-StackBlaze-blue)](https://stackblaze.com) [![Weekly Updates](https://img.shields.io/badge/updates-weekly-green)](https://github.com/stackblaze-templates/astro-ssr/actions) [![License](https://img.shields.io/github/license/stackblaze-templates/astro-ssr)](LICENSE) [![Deploy on StackBlaze](https://img.shields.io/badge/Deploy%20on-StackBlaze-orange)](https://stackblaze.com)
 
 <p align="center"><img src="logo.png" alt="astro-ssr" width="120"></p>
 
