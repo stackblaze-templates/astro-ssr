@@ -18,6 +18,15 @@ docker compose up
 
 See the project files for configuration details.
 
+## Production Security
+
+Before deploying to production, review the following:
+
+- **Environment variables** — copy `.env.example` to `.env` and set all values. Never commit `.env` to version control.
+- **`NODE_ENV`** — must be set to `production`. The Docker image and `docker-compose.yml` already set this; ensure your platform does the same.
+- **Security headers** — `src/middleware.ts` adds `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, and `Permissions-Policy` headers to every response. Review and tighten the CSP policy for your specific deployment (e.g. remove `'unsafe-inline'` once you switch to a nonce-based approach).
+- **Container security** — the Dockerfile runs as a non-root user (`appuser`, UID 1001) and uses a multi-stage build so build tooling is not present in the final image.
+
 ---
 
 ### Maintained by [StackBlaze](https://stackblaze.com)
