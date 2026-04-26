@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/node": "^10.0.4",
-    "astro": "^6.1.5"
+    "astro": "^6.1.9"
   },
   "devDependencies": {
     "@tailwindcss/vite": "latest"
